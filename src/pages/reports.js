@@ -1,14 +1,29 @@
-import React from 'react'
+import React, { useState } from "react";
 import NavBar from '../components/NavbarReport.js';
+import DatePicker from 'react-datepicker';
+import { format } from 'date-fns';
 
-import { Row, Col, Container, Button, InputGroup, FormControl, ListGroup, Card, Form } from 'react-bootstrap'
+import "react-datepicker/dist/react-datepicker.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { Row, Col, Container, Button, InputGroup, FormControl, ListGroup, Card, Form, Alert } from 'react-bootstrap'
 
 // get our fontawesome imports
 import { faDownload, faSearch, faChartArea, faAngleRight, faUser, faCubes, faUsers, faCreditCard, faChartBar, faChartLine } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
 function Reports() {
+    const [startDate, setStartDate] = useState(new Date());
+
+    const handleSubmit = (event) => {
+        const pos_month = format(startDate, 'L')
+        if (pos_month === 5) {
+          event.preventDefault();
+          console.log(pos_month); 
+          event.stopPropagation();
+        }
+      };
+
     return (
         <>
             <div className="pos-header">
@@ -111,23 +126,28 @@ function Reports() {
                             <hr />
                             <Card className="well">
                                 <Card.Body>
-                                    <Form>
+                                    <Form onSubmit={handleSubmit}>
                                         <Form.Group as={Row}>
                                        
                                                 <Form.Group as={Col} controlId="formGridState">
                                                     <Form.Label>Deployement</Form.Label>
                                                     <Form.Control as="select" defaultValue="TIMS HOSPITAL - AHMEDABAD">
-                                                        <option>TIMS HOSPITAL - AHMEDABAD</option>
-
+                                                        <option>CIMS HOSPITAL - AHMEDABAD</option>
+                                                        <option>BJ IN HOSPITAL - AHMEDABAD</option>
+                                                        <option>BJ OUT HOSPITAL - AHMEDABAD</option>
                                                     </Form.Control>
                                                 </Form.Group>
                                      
                                           
                                                 <Form.Group as={Col} controlId="formGridState">
                                                     <Form.Label>Date Range</Form.Label>
-                                                    <Form.Control as="select" defaultValue="5-05-2021">
-                                                        <option>15-05-2021</option>
-                                                    </Form.Control>
+                                                    <br />
+                                                    <DatePicker
+                                                        selected={startDate}
+                                                        onChange={date => setStartDate(date)}
+                                                        className="pos-date-picker"
+                                                        dateFormat="yyyy/MM/dd"
+                                                    />          
                                                 </Form.Group>
                                  
                                           
@@ -144,7 +164,7 @@ function Reports() {
 
                                         <Form.Group as={Row}>
                                             <Col sm={12}> 
-                                            <Form.Check inline checked
+                                            <Form.Check inline defaultChecked
                                                 type="radio"
                                                 label="Detail"
                                                 name="formHorizontalRadios"
