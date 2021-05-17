@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import NavBar from '../components/NavbarReport.js';
 import DatePicker from 'react-datepicker';
 import { format } from 'date-fns';
+import { saveAs } from 'file-saver';
+import { getDownloadFile } from '../components/DownloadFile.js';
 
 import "react-datepicker/dist/react-datepicker.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { Row, Col, Container, Button, InputGroup, FormControl, ListGroup, Card, Form, Alert } from 'react-bootstrap'
+import { Row, Col, Container, Button, InputGroup, FormControl, ListGroup, Card, Form } from 'react-bootstrap'
 
 // get our fontawesome imports
 import { faDownload, faSearch, faChartArea, faAngleRight, faUser, faCubes, faUsers, faCreditCard, faChartBar, faChartLine } from "@fortawesome/free-solid-svg-icons";
@@ -15,11 +17,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Reports() {
     const [startDate, setStartDate] = useState(new Date());
 
+    const downloadFile = () => {
+        getDownloadFile()
+          .then(blob => saveAs(blob, 'report.csv'))
+      }
     const handleSubmit = (event) => {
         const pos_month = format(startDate, 'L')
         if (pos_month === 5) {
           event.preventDefault();
           console.log(pos_month); 
+          downloadFile();
           event.stopPropagation();
         }
       };
@@ -86,11 +93,13 @@ function Reports() {
                                 &nbsp;
                                 Prepaid Card Reports
                             </ListGroup.Item>
-                                <ListGroup.Item action className="pos-list-item">
-                                    <FontAwesomeIcon icon={faChartBar} />
-                                &nbsp;
-                                Sales Reports
-
+                             <ListGroup.Item  className="pos-list-item">
+                                <FontAwesomeIcon icon={faChartBar} /> 
+                                &nbsp; Daily Sales Report
+                            </ListGroup.Item>
+                            <ListGroup.Item  className="pos-list-item">
+                                <FontAwesomeIcon icon={faChartBar} /> 
+                                &nbsp; Monthly Sales Report
                             </ListGroup.Item>
                                 <ListGroup.Item action className="pos-list-item">
                                     <FontAwesomeIcon icon={faChartBar} />
@@ -126,7 +135,7 @@ function Reports() {
                             <hr />
                             <Card className="well">
                                 <Card.Body>
-                                    <Form onSubmit={handleSubmit}>
+                                    <Form   >
                                         <Form.Group as={Row}>
                                        
                                                 <Form.Group as={Col} controlId="formGridState">
@@ -186,7 +195,7 @@ function Reports() {
                                         </Form.Group>
                                         <Form.Group as={Row}>
                                             <Col sm={12}>
-                                                <Button type="submit">Download</Button>
+                                                <Button type="submit" onClick={downloadFile}>Download</Button>
                                             </Col>
                                         </Form.Group>
                                     </Form>
