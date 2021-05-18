@@ -24,8 +24,8 @@ const NavBar = () => {
                             />
                         </Navbar.Brand>
                     </LinkContainer>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
                             <Nav.Link className="pos-nav-link" href="#home">
                                 <FontAwesomeIcon icon={faShoppingCart} />
@@ -48,15 +48,15 @@ const NavBar = () => {
                                 &nbsp;Find Bill
                             </Nav.Link>
                         </Nav>
-                        <Nav inline="true">
-                            <NavDropdown title="Cashier2.">
-                                <NavDropdown.Item className="pos-dropdown-menu" href="#action/3.1">Administrator</NavDropdown.Item>
-                                <NavDropdown.Item className="pos-dropdown-menu" href="#action/3.2">Stock Administrator</NavDropdown.Item>
-                                <NavDropdown.Item className="pos-dropdown-menu" href="#action/3.3">Offer</NavDropdown.Item>
-                                <NavDropdown.Item className="pos-dropdown-menu" href="#action/3.4">CRM</NavDropdown.Item>
-                                <NavDropdown.Item className="pos-dropdown-menu" href="#action/3.5">Accounts</NavDropdown.Item>
-                                <NavDropdown.Item className="pos-dropdown-menu" href="#action/3.6">Help</NavDropdown.Item>
-                                <NavDropdown.Item className="pos-dropdown-menu" href="#action/3.7">Logout</NavDropdown.Item>
+                        <Nav inline="true" className="ml-auto">
+                            <NavDropdown title="Cashier2." id="nav-dropdown">
+                                <NavDropdown.Item  href="#action/3.1">Administrator</NavDropdown.Item>
+                                <NavDropdown.Item  href="#action/3.2">Stock Administrator</NavDropdown.Item>
+                                <NavDropdown.Item  href="#action/3.3">Offer</NavDropdown.Item>
+                                <NavDropdown.Item  href="#action/3.4">CRM</NavDropdown.Item>
+                                <NavDropdown.Item  href="#action/3.5">Accounts</NavDropdown.Item>
+                                <NavDropdown.Item  href="#action/3.6">Help</NavDropdown.Item>
+                                <NavDropdown.Item  href="/">Logout</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                     </Navbar.Collapse>

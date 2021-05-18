@@ -195,7 +195,9 @@ function Reports() {
                                         </Form.Group>
                                         <Form.Group as={Row}>
                                             <Col sm={12}>
-                                                <Button type="submit" onClick={downloadFile}>Download</Button>
+                                                <a href="../src/doc/Daily_Sales_Revenue(2020.11.01--2020.11.30)_CIMS HOSPITAL - AHMEDABAD.csv" download="csv">
+                                                    <Button type="submit">Download</Button>
+                                                </a>
                                             </Col>
                                         </Form.Group>
                                     </Form>
