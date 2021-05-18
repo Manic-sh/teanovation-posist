@@ -9,6 +9,9 @@ import { faShoppingCart, faUsers, faCubes, faChartArea, faSearch } from "@fortaw
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const NavBar = () => {
+    function alertClicked() {
+        alert('Not allowed!');
+    }
     return (
         <>
             
@@ -27,35 +30,35 @@ const NavBar = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
-                            <Nav.Link className="pos-nav-link" href="#home">
+                            <Nav.Link className="pos-nav-link" action onClick={alertClicked} href="#home">
                                 <FontAwesomeIcon icon={faShoppingCart} />
                                 &nbsp; Billing
                             </Nav.Link>
-                            <Nav.Link className="pos-nav-link" href="#link">
+                            <Nav.Link className="pos-nav-link" action onClick={alertClicked} href="#link">
                                 <FontAwesomeIcon icon={faUsers} />
                                 &nbsp;Customers
                             </Nav.Link>
-                            <Nav.Link className="pos-nav-link" href="#link">
+                            <Nav.Link className="pos-nav-link" action onClick={alertClicked} href="#link">
                                 <FontAwesomeIcon icon={faCubes} />
                                 &nbsp;Enterprise Stock
                             </Nav.Link>
-                            <Nav.Link className="pos-nav-link" href="#link">
+                            <Nav.Link className="pos-nav-link" href="/reports">
                                 <FontAwesomeIcon icon={faChartArea} />
                                 &nbsp;Reports
                             </Nav.Link>
-                            <Nav.Link className="pos-nav-link" href="#link">
+                            <Nav.Link className="pos-nav-link" action onClick={alertClicked} href="#link">
                                 <FontAwesomeIcon icon={faSearch} />
                                 &nbsp;Find Bill
                             </Nav.Link>
                         </Nav>
                         <Nav inline="true" className="ml-auto">
                             <NavDropdown title="Cashier2." id="nav-dropdown">
-                                <NavDropdown.Item  href="#action/3.1">Administrator</NavDropdown.Item>
-                                <NavDropdown.Item  href="#action/3.2">Stock Administrator</NavDropdown.Item>
-                                <NavDropdown.Item  href="#action/3.3">Offer</NavDropdown.Item>
-                                <NavDropdown.Item  href="#action/3.4">CRM</NavDropdown.Item>
-                                <NavDropdown.Item  href="#action/3.5">Accounts</NavDropdown.Item>
-                                <NavDropdown.Item  href="#action/3.6">Help</NavDropdown.Item>
+                                <NavDropdown.Item action onClick={alertClicked}  href="#action/3.1">Administrator</NavDropdown.Item>
+                                <NavDropdown.Item action onClick={alertClicked} href="#action/3.2">Stock Administrator</NavDropdown.Item>
+                                <NavDropdown.Item action onClick={alertClicked} href="#action/3.3">Offer</NavDropdown.Item>
+                                <NavDropdown.Item action onClick={alertClicked} href="#action/3.4">CRM</NavDropdown.Item>
+                                <NavDropdown.Item action onClick={alertClicked} href="#action/3.5">Accounts</NavDropdown.Item>
+                                <NavDropdown.Item action onClick={alertClicked} href="#action/3.6">Help</NavDropdown.Item>
                                 <NavDropdown.Item  href="/">Logout</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>

@@ -5,6 +5,9 @@ import { Row, Col, Container, Button, ButtonGroup } from 'react-bootstrap'
 
 
 function Homepage() {
+    function alertClicked() {
+        alert('Admin Access! Not Allowed ');
+    }
     return (
         <>
             <div className="pos-header">
@@ -14,7 +17,7 @@ function Homepage() {
                 <Container>
                     <Row md={12}>
                         <Col>
-                            <ButtonGroup className="pos-btn-group">
+                            <ButtonGroup action onClick={alertClicked} className="pos-btn-group">
                                 <Button variant="outline-secondary" className="pos-btn-new">New</Button>
                                 <Button variant="outline-secondary" className="pos-btn-old"></Button>
                             </ButtonGroup>

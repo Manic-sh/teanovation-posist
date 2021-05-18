@@ -8,7 +8,7 @@ import fileDownload from 'js-file-download';
 import "react-datepicker/dist/react-datepicker.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { Row, Col, Container, Button, InputGroup, FormControl, ListGroup, Card, Form } from 'react-bootstrap'
+import { Row, Col, Container, Button, InputGroup, FormControl, ListGroup, Card, Form, Collapse } from 'react-bootstrap'
 
 // get our fontawesome imports
 import { faDownload, faSearch, faChartArea, faAngleRight, faUser, faCubes, faUsers, faCreditCard, faChartBar, faChartLine } from "@fortawesome/free-solid-svg-icons";
@@ -23,7 +23,12 @@ const url_apr = process.env.PUBLIC_URL + '/doc/Monthly_Sales_Summary_Detailed_Re
 
 function ReportsMonthly() {
     const [startDate, setStartDate] = useState(new Date());
+    const [open, setOpen] = useState(false);
 
+    function alertClicked() {
+        alert('Unauthorized Access!');
+    }
+      
     const  handleDownload = (url, filename) => {
         axios.get(url, {
           responseType: 'blob',
@@ -87,70 +92,75 @@ function ReportsMonthly() {
                         </div>
                         <div className="pos-panel-group">
                             <ListGroup>
-                                <ListGroup.Item action className="pos-list-item">
+                                <ListGroup.Item action onClick={alertClicked} className="pos-list-item">
                                     <FontAwesomeIcon icon={faChartArea} />
                                 &nbsp;
-                                Analytics Reports
+                                    Analytics Reports
                                 &nbsp; <FontAwesomeIcon icon={faAngleRight} />
                                 </ListGroup.Item>
-                                <ListGroup.Item action className="pos-list-item">
+                                <ListGroup.Item action onClick={alertClicked} className="pos-list-item">
                                     <FontAwesomeIcon icon={faUser} />
                                 &nbsp;
                                 Attendance Reports
                             </ListGroup.Item>
-                                <ListGroup.Item action className="pos-list-item">
+                                <ListGroup.Item action onClick={alertClicked} className="pos-list-item">
                                     <FontAwesomeIcon icon={faChartArea} />
                                 &nbsp;
                                 Audit Reports
                             </ListGroup.Item>
-                                <ListGroup.Item action className="pos-list-item">
+                                <ListGroup.Item action onClick={alertClicked} className="pos-list-item">
                                     <FontAwesomeIcon icon={faCubes} />
                                 &nbsp;
                                 Category/Item Wise Reports
                             </ListGroup.Item>
-                                <ListGroup.Item action className="pos-list-item">
+                                <ListGroup.Item action onClick={alertClicked} className="pos-list-item">
                                     <FontAwesomeIcon icon={faUsers} />
                                 &nbsp;
                                 CRM Reports
                             </ListGroup.Item>
-                                <ListGroup.Item action className="pos-list-item">
+                                <ListGroup.Item action onClick={alertClicked} className="pos-list-item">
                                     <FontAwesomeIcon icon={faCreditCard} />
                                 &nbsp;
                                 Prepaid Card Reports
                             </ListGroup.Item>
-                            <ListGroup.Item  className="pos-list-item">
-                                <FontAwesomeIcon icon={faChartBar} /> 
+                            <ListGroup.Item className="pos-list-item" onClick={() => setOpen(!open)}
+                                aria-controls="example-collapse-text"
+                                aria-expanded={open}>
+                                    <FontAwesomeIcon icon={faChartBar} />
                                 &nbsp;
-                                    <a href="/reports"> Daily Sales Report
-                                </a>
+                                Sales Reports
                             </ListGroup.Item>
-                            <ListGroup.Item  className="pos-list-item">
-                                <FontAwesomeIcon icon={faChartBar} /> 
-                                &nbsp; <a href="/reports_monthly">
-                                    Monthly Sales Report
-                                    </a>
-                            </ListGroup.Item>
-                                <ListGroup.Item action className="pos-list-item">
+                            <Collapse in={open}>
+                                   <div className="example-collapse-text">
+                                       <div className="pos-nav-a">
+                                            <a href="/reports"> Daily Sales Report</a>
+                                        </div>
+                                        <div className="pos-nav-a">
+                                        <a href="/reports_monthly">Monthly Sales Report</a>  
+                                        </div>  
+                                    </div> 
+                                </Collapse>
+                                <ListGroup.Item action onClick={alertClicked} className="pos-list-item">
                                     <FontAwesomeIcon icon={faChartBar} />
                                 &nbsp;
                                 GST Reports
                             </ListGroup.Item>
-                                <ListGroup.Item action className="pos-list-item">
+                                <ListGroup.Item action onClick={alertClicked} className="pos-list-item">
                                     <FontAwesomeIcon icon={faUsers} />
                                 &nbsp;
                                 Staff Performance Reports
                             </ListGroup.Item>
-                                <ListGroup.Item action className="pos-list-item">
+                                <ListGroup.Item action onClick={alertClicked} className="pos-list-item">
                                     <FontAwesomeIcon icon={faUsers} />
                                 &nbsp;
                                 Cash Management Reports
                             </ListGroup.Item>
-                                <ListGroup.Item action className="pos-list-item">
+                                <ListGroup.Item action onClick={alertClicked} className="pos-list-item">
                                     <FontAwesomeIcon icon={faUsers} />
                                 &nbsp;
                                 Banquet Reports
                             </ListGroup.Item>
-                                <ListGroup.Item action className="pos-list-item">
+                                <ListGroup.Item action onClick={alertClicked} className="pos-list-item">
                                     <FontAwesomeIcon icon={faChartLine} />
                                 &nbsp;
                                 Master Dashboard
@@ -187,6 +197,7 @@ function ReportsMonthly() {
                                                         showMonthYearPicker
                                                         showFullMonthYearPicker
                                                         showTwoColumnMonthYearPicker
+                                                        className="pos-date-picker"
                                                         />          
                                                 </Form.Group>
                                                 <Form.Group as={Col} controlId="formGridState">

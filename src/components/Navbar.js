@@ -10,6 +10,9 @@ import { faShoppingCart, faUndoAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const NavBar = () => {
+    function alertClicked() {
+        alert('Unauthorized Access!');
+    }
     return (
         <>
             <Navbar className="pos-nav" bg="light" expand="lg" fixed="top">
@@ -26,7 +29,7 @@ const NavBar = () => {
                 </LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
+                    <Nav className="mr-auto" action onClick={alertClicked}>
                         <Nav.Link className="pos-nav-link" href="#home">
                             <FontAwesomeIcon icon={ faShoppingCart } />
                             &nbsp; Billing

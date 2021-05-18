@@ -16,9 +16,12 @@ export default function Login() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        if (username === "jsk_cashier2" && password === "Trauma@123") {
+        if (username === "jsk_cashier2" && password === "Trauma@123")  {
             history.push("/billing");
-        } else {
+        } else if(username === "admin" && password === "Vishal@123")  {
+            history.push("/billing");
+        }
+         else {
             <Alert variant="danger">
                 <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
             </Alert>
