@@ -13,14 +13,15 @@ import { Row, Col, Container, Button, InputGroup, FormControl, ListGroup, Card, 
 // get our fontawesome imports
 import { faDownload, faSearch, faChartArea, faAngleRight, faUser, faCubes, faUsers, faCreditCard, faChartBar, faChartLine } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-const url_nov = process.env.PUBLIC_URL + '/doc/Daily_Sales_Revenue(2020.11.01--2020.11.30)_CIMS_HOSPITAL-AHMEDABAD.csv';
-const url_dec = process.env.PUBLIC_URL + '/doc/Daily_Sales_Revenue(2020.12.01--2020.12.30)_CIMS_HOSPITAL-AHMEDABAD.csv';
-const url_jan = process.env.PUBLIC_URL + '/doc/Daily_Sales_Revenue(2021.01.01--2021.01.30)_CIMS_HOSPITAL-AHMEDABAD.csv';
-const url_feb = process.env.PUBLIC_URL + '/doc/Daily_Sales_Revenue(2021.02.01--2021.02.28)_CIMS_HOSPITAL-AHMEDABAD.csv';
-const url_mar = process.env.PUBLIC_URL + '/doc/Daily_Sales_Revenue(2021.03.01--2021.03.31)_CIMS_HOSPITAL-AHMEDABAD.csv';
-const url_apr = process.env.PUBLIC_URL + '/doc/Daily_Sales_Revenue(2021.04.01--2021.04.30)_CIMS_HOSPITAL-AHMEDABAD-2.csv';
+const url_oct = process.env.PUBLIC_URL + '/doc/Monthly_Sales_Summary_Detailed_Report_October_20.csv';
+const url_nov = process.env.PUBLIC_URL + '/doc/Monthly_Sales_Summary_Detailed_Report_November_20.csv';
+const url_dec = process.env.PUBLIC_URL + '/doc/Monthly_Sales_Summary_Detailed_Report_December_20.csv';
+const url_jan = process.env.PUBLIC_URL + '/doc/Monthly_Sales_Summary_Detailed_Report_January_21.csv';
+const url_feb = process.env.PUBLIC_URL + '/doc/Monthly_Sales_Summary_Detailed_Report_February_21.csv';
+const url_mar = process.env.PUBLIC_URL + '/doc/Monthly_Sales_Summary_Detailed_Report_March_21.csv';
+const url_apr = process.env.PUBLIC_URL + '/doc/Monthly_Sales_Summary_Detailed_Report_April_21.csv';
 
-function Reports() {
+function ReportsMonthly() {
     const [startDate, setStartDate] = useState(new Date());
 
     const  handleDownload = (url, filename) => {
@@ -34,7 +35,9 @@ function Reports() {
     const handleSubmit = (event) => {
         event.preventDefault();
         const pos_month = format(startDate, 'L')
-        if (pos_month == 11) {
+        if (pos_month == 10) {
+            handleDownload(url_oct, "report.csv")
+        }else if (pos_month == 11) {
           handleDownload(url_nov, "report.csv")
         }else if (pos_month == 12) {
             handleDownload(url_dec, "report.csv")
@@ -115,7 +118,7 @@ function Reports() {
                                 &nbsp;
                                 Prepaid Card Reports
                             </ListGroup.Item>
-                             <ListGroup.Item  className="pos-list-item">
+                            <ListGroup.Item  className="pos-list-item">
                                 <FontAwesomeIcon icon={faChartBar} /> 
                                 &nbsp;
                                     <a href="/reports"> Daily Sales Report
@@ -157,7 +160,7 @@ function Reports() {
                     </Col>
                     <Col xs={12} lg={10}>
                         <Container className="pos-report-container">
-                            <h4>Dialy Sales Report</h4>
+                            <h4>Monthly Sales Report</h4>
                             <hr />
                             <Card className="well">
                                 <Card.Body>
@@ -180,12 +183,12 @@ function Reports() {
                                                     <DatePicker
                                                         selected={startDate}
                                                         onChange={date => setStartDate(date)}
-                                                        className="pos-date-picker"
-                                                        dateFormat="yyyy/MM/dd"
-                                                    />          
+                                                        dateFormat="MM/yyyy"
+                                                        showMonthYearPicker
+                                                        showFullMonthYearPicker
+                                                        showTwoColumnMonthYearPicker
+                                                        />          
                                                 </Form.Group>
-                                 
-                                          
                                                 <Form.Group as={Col} controlId="formGridState">
                                                     <Form.Label>Tab</Form.Label>
                                                     <Form.Control as="select" defaultValue="Select Tab">
@@ -239,4 +242,4 @@ function Reports() {
     );
 }
 
-export default Reports;
+export default ReportsMonthly;

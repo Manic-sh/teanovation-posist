@@ -10,6 +10,7 @@ import App from './App';
 import Login from './pages/login.js'
 import Homepage from './pages/homepage.js'
 import Reports from './pages/reports.js'
+import ReportsMonthly from './pages/reports_monthly.js'
 
 import reportWebVitals from './reportWebVitals';
 
@@ -21,6 +22,7 @@ ReactDOM.render(
         <Route path="/login" component={Login} />
         <Route path="/billing" component={Homepage} />
         <Route path="/reports" component={Reports} />
+        <Route path="/reports_monthly" component={ReportsMonthly} />
       </Switch>
     </Router>
   </React.StrictMode>,
