@@ -28,7 +28,9 @@ function Reports() {
     function alertClicked() {
         alert('Unauthorized Access!');
     }
-      
+    function alertReport() {
+        alert('Not available!');
+    }  
     const  handleDownload = (url, filename) => {
         axios.get(url, {
           responseType: 'blob',
@@ -55,7 +57,7 @@ function Reports() {
         }else if (pos_month == 4) {
             handleDownload(url_apr, "report.csv")
         }else {
-            console.log("No File");
+            alertReport();
         }
         
         event.stopPropagation();
@@ -123,7 +125,7 @@ function Reports() {
                                 &nbsp;
                                 Prepaid Card Reports
                             </ListGroup.Item>
-                            <ListGroup.Item className="pos-list-item" onClick={() => setOpen(!open)}
+                            <ListGroup.Item className="pos-list-item" action onClick={() => setOpen(!open)}
                                 aria-controls="example-collapse-text"
                                 aria-expanded={open}>
                                     <FontAwesomeIcon icon={faChartBar} />

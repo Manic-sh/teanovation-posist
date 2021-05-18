@@ -52,7 +52,7 @@ const NavBar = () => {
                             </Nav.Link>
                         </Nav>
                         <Nav inline="true" className="ml-auto">
-                            <NavDropdown title="Cashier2." id="nav-dropdown">
+                            <NavDropdown title="Admin." id="nav-dropdown">
                                 <NavDropdown.Item action onClick={alertClicked}  href="#action/3.1">Administrator</NavDropdown.Item>
                                 <NavDropdown.Item action onClick={alertClicked} href="#action/3.2">Stock Administrator</NavDropdown.Item>
                                 <NavDropdown.Item action onClick={alertClicked} href="#action/3.3">Offer</NavDropdown.Item>

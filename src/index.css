@@ -298,3 +298,7 @@ code {
   padding: 10px 20px;
   border-bottom: 1px solid #D4D4D4;
 }
+.dropdown-menu {
+  right: 0;
+  left: auto;
+}
